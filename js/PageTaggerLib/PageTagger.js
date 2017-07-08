@@ -3,7 +3,7 @@ var selectedClasses = [];
 function PageTagger() {
 
 	this.showSelection = true;
-  this.shouldHighlightResult = true;
+  this.shouldHighlightResult = false;
 }
 
 PageTagger.prototype.init = function(options = true)
