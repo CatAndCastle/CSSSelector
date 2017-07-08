@@ -41,16 +41,12 @@ Result will contain data scraped from the page
 	selectors:
 	{
 		name: 'span.entity-name-text',
-		role: 'span.entity-mgmt-role',
-		headline: 'p.entity-headline',
-		profile: 'img.entity-image.member-image'
+		someTag: 'span.entity-mgmt-role'
 	},
 	data:[
 		{
 			name: 'Maggie W',
-			role: 'Group Owner',
-			headline: 'Project Management Coordinator',
-			profile: 'https://media.licdn.com/…..jpg'
+			someTag: 'Group Owner'
 		},
 		{...},
 		...
