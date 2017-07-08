@@ -1,33 +1,74 @@
-<html>
-    <head>
-    </head>
-    <body>
-        <h2>Multi - CSS Selector</h2>
-        <div><b>Version:</b> 1.0</div>
-        <div><b>Author:</b> John Wang (johnwangfortune@gmail.com)</div>
-        <div><b>Updated:</b> 2017.07.07</div>
-        <div><b>Description:</b> Chrome extension that uses CSS selector library for scraping web pages.</div>
-        <div><b>Bundled Software / Libraries:</b></div>
-        <div>
-            <ul>
-                <li>jQuery 1.9.1: http://jquery.com/</li>
-                <li>SelectorGadget: https://github.com/cantino/selectorgadget</li>
-            </ul>
-        </div>
-        <br/>
-        <div>-How to Use ?</div>
-        <div>1. Load extension into google chrome browser. You will notice a new extension icon on the browser toolbar.</div>
-        <div>2. Go to the web page where you want to scrape data from.</div>
-        <div>3. Click on the extension icon and press "Clear Saved Data" button. (Make sure that you clear all saved data before starting , because this extension stores necessary info in localStorage)</div>
-        <div>4. Input tag name (input field on the right side of "select" button) and press "select" button.</div>
-        <div>5. Select & deselect elements until you get correct list of elements</div>
-        <div>6. Press "Accept Selection" button to store data , or press "cancel" button to undo selection.</div>
-        <div>7. Repeat 4 - 6 for multi - selection</div>
-        <div>8. Press "result" button , you will see selected elements highlighted (different color for each tag).  Go to console and check result object. (You can uncheck the checkbox to prevent highlighting result) </div>
-        <br/>
-        <div>-Customization</div>
-        <div>Go to js/PageTaggerLib/CustomSelectionStyle.css file and do customization work.</div>
-        <br/>
-        <div>If you find this template helpful and can think of a way to improve it, please do so!</div>
-    </body>
-</html>
+# PageTagger Library
+
+###Install
+Download the js/PageTaggerLib folder and add it to your project.
+
+###Dependencies
+jQuery 1.9.1: http://jquery.com/
+SelectorGadget: https://github.com/cantino/selectorgadget
+
+###Demo
+1. Clone/download source code from this project.
+2. Navigate to chrome://extensions/ in yuor Chrome browser.
+3. Click Load unpacked extension... and load the CSSSelector folder.
+4. There is now a new chrom extension icon in the top right of your browser.
+5. Navigate to any page you want to scrape and test it out.
+Ex: https://www.linkedin.com/groups/1976445/profile
+
+
+## Basic Usage
+```javascript
+var pageTagger = new PageTagger();
+pageTagger.init();
+
+// select names
+pageTagger.select('name');
+// .... user tags elements on page .... 
+pageTagger.acceptSelection();
+
+// select something else
+pageTagger.select('someTag');
+pageTagger.acceptSelection();
+
+var result = pageTagger.result();
+console.log(result);
+```
+
+Result will contain data scraped from the page
+```javascript
+{
+	selectors:
+	{
+		name: “span.entity-name-text”,
+		role: “span.entity-mgmt-role”,
+		headline: “p.entity-headline”,
+		profile: “img.entity-image.member-image"
+	},
+	data:[
+		{
+			name: “Maggie W”,
+			role: “Group Owner”,
+			headline: “Project Management Coordinator,
+			profile: “https://media.licdn.com/…..jpg”
+		},
+		{...},
+		...
+	]
+}
+```
+Check js/main.js to see a similar implementation of PageTagger.
+
+###Reference
+####init()
+Initialize PageTagger Object
+####select([tagName])
+	tagName - optional name for this selection group. If no tagName is provided - a default name will be used in the results object.
+Initiates the selection process. User can click on any element on the page. The library will find and highligh all matching elements. User can click on a highlighted element to remove it from the selector, or click on an unhighlighted element to add it to the selector.
+####acceptSelection([tagName])
+Accepts all highlihted elements. Ends selection process for this tagName
+####result()
+Returns object with results
+NOTE: you may need to run ```localStorage.clear();``` after each use to clear all data that PageTagger stores locally in the browser.
+
+###Custom Styles
+Edit CustomSelectionStyle.css to change how selected elements are highlighted on screen.
