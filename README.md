@@ -1,13 +1,13 @@
 # PageTagger Library
 
-###Install
+### Install
 Download the js/PageTaggerLib folder and add it to your project.
 
-###Dependencies
+### Dependencies
 jQuery 1.9.1: http://jquery.com/
 SelectorGadget: https://github.com/cantino/selectorgadget
 
-###Demo
+### Demo
 1. Clone/download source code from this project.
 2. Navigate to chrome://extensions/ in yuor Chrome browser.
 3. Click Load unpacked extension... and load the CSSSelector folder.
@@ -23,7 +23,7 @@ pageTagger.init();
 
 // select names
 pageTagger.select('name');
-// .... user tags elements on page .... 
+// .... user tags elements on page
 pageTagger.acceptSelection();
 
 // select something else
@@ -39,17 +39,17 @@ Result will contain data scraped from the page
 {
 	selectors:
 	{
-		name: “span.entity-name-text”,
-		role: “span.entity-mgmt-role”,
-		headline: “p.entity-headline”,
-		profile: “img.entity-image.member-image"
+		name: 'span.entity-name-text',
+		role: 'span.entity-mgmt-role',
+		headline: 'p.entity-headline',
+		profile: 'img.entity-image.member-image'
 	},
 	data:[
 		{
-			name: “Maggie W”,
-			role: “Group Owner”,
-			headline: “Project Management Coordinator,
-			profile: “https://media.licdn.com/…..jpg”
+			name: 'Maggie W',
+			role: 'Group Owner',
+			headline: 'Project Management Coordinator',
+			profile: 'https://media.licdn.com/…..jpg'
 		},
 		{...},
 		...
@@ -58,17 +58,17 @@ Result will contain data scraped from the page
 ```
 Check js/main.js to see a similar implementation of PageTagger.
 
-###Reference
-####init()
+### Reference
+#### init()
 Initialize PageTagger Object
-####select([tagName])
+#### select([tagName])
 	tagName - optional name for this selection group. If no tagName is provided - a default name will be used in the results object.
 Initiates the selection process. User can click on any element on the page. The library will find and highligh all matching elements. User can click on a highlighted element to remove it from the selector, or click on an unhighlighted element to add it to the selector.
-####acceptSelection([tagName])
+#### acceptSelection([tagName])
 Accepts all highlihted elements. Ends selection process for this tagName
-####result()
+#### result()
 Returns object with results
 NOTE: you may need to run ```localStorage.clear();``` after each use to clear all data that PageTagger stores locally in the browser.
 
-###Custom Styles
+### Custom Styles
 Edit CustomSelectionStyle.css to change how selected elements are highlighted on screen.
