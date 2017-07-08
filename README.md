@@ -5,13 +5,14 @@ Download the js/PageTaggerLib folder and add it to your project.
 
 ### Dependencies
 jQuery 1.9.1: http://jquery.com/
+
 SelectorGadget: https://github.com/cantino/selectorgadget
 
 ### Demo
 1. Clone/download source code from this project.
-2. Navigate to chrome://extensions/ in yuor Chrome browser.
+2. Navigate to chrome://extensions/ in your Chrome browser.
 3. Click Load unpacked extension... and load the CSSSelector folder.
-4. There is now a new chrom extension icon in the top right of your browser.
+4. There is now a new chrome extension icon in the top right of your browser.
 5. Navigate to any page you want to scrape and test it out.
 Ex: https://www.linkedin.com/groups/1976445/profile
 
